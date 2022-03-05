@@ -13,8 +13,9 @@ import frc.robot.Constants.Controller;
 /** An example command that uses an example subsystem. */
 public class ArcadeDriveCmd extends CommandBase {
   private final DriveSubsystem m_driveTrain;
-//   private final double  m_movingForward;
-//   private final double  m_turning;
+
+  //private final Supplier<Double> speedFunction, turnFunction;
+  
   private final Joystick m_stick = new Joystick(Controller.kDriverControllerPort);
   
   // private final  pastJoystics = new[];
@@ -26,9 +27,10 @@ public class ArcadeDriveCmd extends CommandBase {
    *
    * @param subsystem The subsystem used by this command.
    */
-  public ArcadeDriveCmd(DriveSubsystem driveTrain) {
-    // m_movingForward = forward;
-    // m_turning = turning;
+  public ArcadeDriveCmd(DriveSubsystem driveTrain ) {//,
+    //Supplier<Double> speedFunction, Supplier<Double> turnFunction) {
+    // this.speedFunction = speedFunction;
+    // this.turnFunction = turnFunction;
     m_driveTrain = driveTrain;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(driveTrain);
@@ -44,19 +46,14 @@ public class ArcadeDriveCmd extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    // m_movingForward = m_stick.getY();
-    // m_turning = m_stick.getX();
-    m_driveTrain.arcadeDrive(LagArray(m_stick.getY(), Controller.kArrayLength)*.8, m_stick.getX()*0.6);
-    // if (m_stick.getRawButton(1)) {
-    //   m_singleMotor.run(.5);
-    //   m_singleMotor2.run(.5);
-    // } else if (m_stick.getRawButton(3)) {
-    //   m_singleMotor.run(-.5);
-    //   m_singleMotor2.run(.5);
-    // } else {
-    //   m_singleMotor.run(0);
-    //   m_singleMotor2.run(.5);
-    // }
+    // double realSpeed = speedFunction.get();
+    // double turnFunction = speedFunction.get();
+    
+    //m_driveTrain.arcadeDrive(LagArray(realSpeed, Controller.kArrayLength)*DriveConstants.kDriveCoefficient, turnFunction*DriveConstants.kTurnCoefficient);
+    m_driveTrain.arcadeDrive(m_stick.getRawAxis(1)*DriveConstants.kDriveCoefficient, m_stick.getRawAxis(0)*DriveConstants.kTurnCoefficient);
+
+      //LagArray(m_stick.getY(), Controller.kArrayLength)*DriveConstants.kDriveCoefficient, m_stick.getY()*DriveConstants.kTurnCoefficient);
+    
   }
 
   

@@ -23,15 +23,15 @@ public final class Constants {
         public static final int kVoltageCompLevel = 11;     // this is what the old code has this value as
         public static final double kRampCoefficient = 0.1;  // this is also in the code so i am transfering it. i dont kknow if we need it but i am putting it in anyway
 
-        public static final double kDriveCoefficient = .8;
-        public static final double kTurnCoefficient = .6; // this shoud slow the turing of the bot more than the speed. this is how we can tune the speed
+        public static final double kDriveCoefficient = 0.8;
+        public static final double kTurnCoefficient = 0.6; // this shoud slow the turing of the bot more than the speed. this is how we can tune the speed
 
         public static final double kAutonomousTime = 3.0; // autonomous time
 
     }
     public static final class SubsytemConstants {
         // Climber stuff --------
-        public static final int kClimberMotor = 4; // need to chech this
+        public static final int kClimberMotor = 9; // need to chech this
         public static final double kClimberSpeed = 0.5; // change for speed of the Climber
 
         // Intake Stuff --------
@@ -39,11 +39,11 @@ public final class Constants {
         public static final double kIntakeSpeed = 0.5; // change for speed of the Intake
 
         // Transit Stuff --------
-        public static final int kTransitMotor = 7; // need to chech this
-        public static final double kTransitSpeed = 0.7; // change for speed of the Transit
+        public static final int kTransitMotor = 4; // need to chech this
+        public static final double kTransitSpeed = -1; // change for speed of the Transit
         
         // Shooter Stuff --------
-        public static final int kShooterMotorOne = 5; // need to chech this
+        public static final int kShooterMotorOne = 7; // need to chech this
         public static final int kShooterMotorTwo = 6; // need to chech this
         public static final double kShooterSpeedOne = 0.5; // change for speed of the Shooter
         public static final double kShooterSpeedTwo = 0.5; // change for speed of the Shooter

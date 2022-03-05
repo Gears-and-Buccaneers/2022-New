@@ -12,7 +12,7 @@ import frc.robot.Constants.SubsytemConstants;
 public class IntakeCmd extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final IntakeSubsytem m_subsystem;
-  private boolean Toggle = false;
+  //private boolean Toggle = false;
   /**
    * Creates a new ExampleCommand.
    *
@@ -27,17 +27,17 @@ public class IntakeCmd extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    Toggle = !Toggle;
+    //Toggle = !Toggle;
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (Toggle) {
+    //if (Toggle) {
       m_subsystem.Run(SubsytemConstants.kIntakeSpeed);
-    } else {
-      m_subsystem.Run(0);
-    }
+    //} else {
+      //m_subsystem.Run(0);
+    //}
   }
 
   // Called once the command ends or is interrupted.

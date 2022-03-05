@@ -65,7 +65,7 @@ public class DriveSubsystem extends SubsystemBase {
   }
 
   public void arcadeDrive(double fwd, double rot) {  
-    m_drive.arcadeDrive(fwd*DriveConstants.kRampCoefficient, rot*DriveConstants.kTurnCoefficient, true);
+    m_drive.arcadeDrive(fwd, rot, true);
     SmartDashboard.putNumber("Forward", fwd*DriveConstants.kRampCoefficient);
     SmartDashboard.putNumber("Rotation", rot*DriveConstants.kTurnCoefficient);
   }

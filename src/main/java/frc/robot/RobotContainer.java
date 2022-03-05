@@ -16,13 +16,14 @@ import frc.robot.subsystems.IntakeSubsytem;
 import frc.robot.subsystems.ShooterSubsytem;
 import frc.robot.subsystems.TransitSubsytem;
 
+import frc.robot.commands.ArcadeDriveCmd;
 import frc.robot.commands.ClimberCmd;
+import frc.robot.commands.DriveForwardCmd;
 import frc.robot.commands.IntakeCmd;
 import frc.robot.commands.ShooterCmd;
 import frc.robot.commands.TransitCmd;
 
 import frc.robot.Constants.Controller;
-
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -43,8 +44,10 @@ public class RobotContainer {
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the button bindings
-    DriveSubsystem.setDefaultComand
     configureButtonBindings();
+
+    m_DriveSubsystem.setDefaultCommand(new ArcadeDriveCmd(m_DriveSubsystem));//, () -> m_stick.getY(), () -> m_stick.getX()));
+    
   }
 
   /**
@@ -55,12 +58,12 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
 
-    new JoystickButton(m_stick, 1).whenHeld(new ClimberCmd(m_climberSubsytem, true));
-    new JoystickButton(m_stick, 2).whenHeld(new ClimberCmd(m_climberSubsytem, false));
+    new JoystickButton(m_stick, 4).whenHeld(new ClimberCmd(m_climberSubsytem, true));
+    new JoystickButton(m_stick, 5).whenHeld(new ClimberCmd(m_climberSubsytem, false));
 
-    new JoystickButton(m_stick, 3).toggleWhenActive(new IntakeCmd(m_IntakeSubsytem));
+    new JoystickButton(m_stick, 1).whenHeld(new IntakeCmd(m_IntakeSubsytem));
     new JoystickButton(m_stick, 4).whenHeld(new ShooterCmd(m_ShooterSubsytem));
-    new JoystickButton(m_stick, 5).whenHeld(new TransitCmd(m_TransitSubsytem));
+    new JoystickButton(m_stick, 2).whenHeld(new TransitCmd(m_TransitSubsytem));
   }
 
   /**
@@ -69,7 +72,6 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    
-    return null;
+    return new DriveForwardCmd(m_DriveSubsystem);
   }
 }
