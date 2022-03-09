@@ -25,14 +25,18 @@ public final class Constants {
 
         public static final double kDriveCoefficient = 0.8;
         public static final double kTurnCoefficient = 0.6; // this shoud slow the turing of the bot more than the speed. this is how we can tune the speed
+        public static final double kXLimiter = 3; // you can play with this number. this sould do the same thing as the lagg aray but better.
+        public static final double kYLimiter = 3; 
 
         public static final double kAutonomousTime = 3.0; // autonomous time
 
     }
     public static final class SubsytemConstants {
         // Climber stuff --------
-        public static final int kClimberMotor = 9; // need to chech this
-        public static final double kClimberSpeed = 0.5; // change for speed of the Climber
+        public static final int kClimberMotor = 10; // need to chech this
+        public static final double kClimberSpeed = 0.25; // change for speed of the Climber
+        public static final int kClimberMotor1 = 11; // need to chech this
+        public static final double kClimberSpeed1 = kClimberSpeed; // change for speed of the Climber
 
         // Intake Stuff --------
         public static final int kIntakeMotor = 5; // need to chech this
@@ -45,8 +49,8 @@ public final class Constants {
         // Shooter Stuff --------
         public static final int kShooterMotorOne = 7; // need to chech this
         public static final int kShooterMotorTwo = 6; // need to chech this
-        public static final double kShooterSpeedOne = 0.5; // change for speed of the Shooter
-        public static final double kShooterSpeedTwo = 0.5; // change for speed of the Shooter
+        public static final double kShooterSpeedOne = -.85; // change for speed of the Shooter
+        public static final double kShooterSpeedTwo = -kShooterSpeedOne+.125; // change for speed of the Shooter
     }
     
 

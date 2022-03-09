@@ -35,18 +35,18 @@ public class ClimberCmd extends CommandBase {
   @Override
   public void execute() {
     if (m_derection) {
-      m_ClimberMotor.Run(SubsytemConstants.kClimberSpeed);
+      m_ClimberMotor.Run(SubsytemConstants.kClimberSpeed, SubsytemConstants.kClimberSpeed1);
     } else if (!m_derection){
-      m_ClimberMotor.Run(-SubsytemConstants.kClimberSpeed);
+      m_ClimberMotor.Run(-SubsytemConstants.kClimberSpeed, -SubsytemConstants.kClimberSpeed1);
     } else {
-      m_ClimberMotor.Run(0);
+      m_ClimberMotor.Run(0, 0);
     }
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    m_ClimberMotor.Run(0);
+    m_ClimberMotor.Run(0, 0);
   }
 
   // Returns true when the command should end.

@@ -37,9 +37,7 @@ public class DriveForwardCmd extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (m_timer.get() <= 3.0) {
-      m_DriveMotor.arcadeDrive(.5, 0);      
-    }
+    m_DriveMotor.arcadeDrive(.5, 0);      
   }
 
   // Called once the command ends or is interrupted.
