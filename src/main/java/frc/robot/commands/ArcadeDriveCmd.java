@@ -54,12 +54,13 @@ public class ArcadeDriveCmd extends CommandBase {
     // double turnFunction = speedFunction.get();
     
     //m_driveTrain.arcadeDrive(LagArray(m_stick.getRawAxis(1), Controller.kArrayLength)*DriveConstants.kDriveCoefficient, m_stick.getRawAxis(0)*DriveConstants.kTurnCoefficient);
-    m_driveTrain.arcadeDrive(
-      xLimiter.calculate(m_stick.getRawAxis(1))*DriveConstants.kDriveCoefficient, 
-      yLimiter.calculate(m_stick.getRawAxis(0))*DriveConstants.kTurnCoefficient
-      );
-
-      //LagArray(m_stick.getY(), Controller.kArrayLength)*DriveConstants.kDriveCoefficient, m_stick.getY()*DriveConstants.kTurnCoefficient);
+    
+    
+    
+    
+    
+    m_driveTrain.arcadeDrive(xLimiter.calculate(m_stick.getRawAxis(1))*DriveConstants.kDriveCoefficient, yLimiter.calculate(m_stick.getRawAxis(0))*DriveConstants.kTurnCoefficient); // this is a test that should make it slow down not instaly. i dont know exacly how it works. but i think that it works. if it does not work coment it out with // and then uncoment the the one that says this one
+    //LagArray(m_stick.getY(), Controller.kArrayLength)*DriveConstants.kDriveCoefficient, m_stick.getY()*DriveConstants.kTurnCoefficient);      // this one
     
   }
 
