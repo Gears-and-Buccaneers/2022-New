@@ -23,7 +23,7 @@ public final class Constants {
         public static final int kVoltageCompLevel = 11;     // this is what the old code has this value as
         public static final double kRampCoefficient = 0.1;  // this is also in the code so i am transfering it. i dont kknow if we need it but i am putting it in anyway
 
-        public static final double kDriveCoefficient = 0.8;
+        public static final double kDriveCoefficient = 0.8; // you can also try .6 and .3 for turning
         public static final double kTurnCoefficient = 0.6; // this shoud slow the turing of the bot more than the speed. this is how we can tune the speed
         public static final double kXLimiter = 3; // you can play with this number. this sould do the same thing as the lagg aray but better.
         public static final double kYLimiter = 3; 
