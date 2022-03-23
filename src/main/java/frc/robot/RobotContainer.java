@@ -68,7 +68,8 @@ public class RobotContainer {
     new JoystickButton(m_stick, 2).whenHeld(new TransitCmd(m_TransitSubsytem));
 
 
-    new JoystickButton(m_stick, 7).whenHeld(new DriveForwardCmd(m_DriveSubsystem));
+    //new JoystickButton(m_stick, 7).whenHeld(new DriveForwardCmd(m_DriveSubsystem)); //this was a test for testing out a drive auto. i never got to test it.
+    // when you hit this button the bot should go forward.
   }
 
   /**
