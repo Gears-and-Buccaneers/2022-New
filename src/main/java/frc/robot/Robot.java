@@ -78,7 +78,8 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousPeriodic() {
     double time = Timer.getFPGATimestamp();
-    System.out.println(time - startTime);
+
+    //System.out.println(time - startTime);
 
     if (time - startTime < 3) {
       m_DriveSubsystem.arcadeDrive(.5, 0);
