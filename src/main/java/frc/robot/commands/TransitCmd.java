@@ -12,14 +12,15 @@ import frc.robot.Constants.SubsytemConstants;
 public class TransitCmd extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final TransitSubsytem m_subsystem;
-
+  private boolean m_derection;
   /**
    * Creates a new ExampleCommand.
    *
    * @param subsystem The subsystem used by this command.
    */
-  public TransitCmd(TransitSubsytem subsystem) {
+  public TransitCmd(TransitSubsytem subsystem, boolean derection) {
     m_subsystem = subsystem;
+    m_derection = derection;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(subsystem);
   }
@@ -31,7 +32,12 @@ public class TransitCmd extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_subsystem.Run(SubsytemConstants.kTransitSpeed);
+    if (m_derection) {
+      m_subsystem.Run(SubsytemConstants.kTransitSpeed);
+    } else {
+      m_subsystem.Run(-SubsytemConstants.kTransitSpeed);
+    }
+      
   }
 
   // Called once the command ends or is interrupted.

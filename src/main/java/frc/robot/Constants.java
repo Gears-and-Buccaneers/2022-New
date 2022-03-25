@@ -18,7 +18,6 @@ public final class Constants {
         public static final int kLeftChild = 1;
         public static final int kRightParent = 2;
         public static final int kRightChild = 3;
-        public static final int SPEED = 50;
 
         public static final int kVoltageCompLevel = 11;     // this is what the old code has this value as
         public static final double kRampCoefficient = 0.1;  // this is also in the code so i am transfering it. i dont kknow if we need it but i am putting it in anyway
@@ -26,7 +25,9 @@ public final class Constants {
         public static final double kDriveCoefficient = 0.8; // you can also try .6 and .3 for turning
         public static final double kTurnCoefficient = 0.6; // this shoud slow the turing of the bot more than the speed. this is how we can tune the speed
         public static final double kXLimiter = 3; // you can play with this number. this sould do the same thing as the lagg aray but better.
-        public static final double kYLimiter = 3; 
+        public static final double kYLimiter = 3;
+        
+        
 
         public static final double kAutonomousTime = 3.0; // autonomous time
 
@@ -50,12 +51,17 @@ public final class Constants {
         public static final int kShooterMotorOne = 7; // need to chech this
         public static final int kShooterMotorTwo = 6; // need to chech this
         public static final double kShooterSpeedOne = -.85; // change for speed of the Shooter
-        public static final double kShooterSpeedTwo = -kShooterSpeedOne+.125; // change for speed of the Shooter
+        public static final double kShooterSpeedTwo = -kShooterSpeedOne +.125; // change for speed of the Shooter
+
+        // Auto Stuff --------
+        public static final double kAutoSpeed = .5;
     }
     
 
     public static final class Controller {
         public static final int kDriverControllerPort = 0; // this is the port were the controler is conected.
+        public static final int kButtonControllerPort = kDriverControllerPort; // you can change this to be a 1 so you have two controlers and two peoole driving the robot. 
+        // one perosn can drive and only focas on driving and the other peorson can user the climber and other things. like intake and stuff.
         public static final int kjoysticCofetien = 2; // it must be larger
         public static final int kArrayLength = 100; // this will affect the lagg of the joystic.
         //public static final int ControllerType = -- need to think how to do this one. i am not going to do this now.

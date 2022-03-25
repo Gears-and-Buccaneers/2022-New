@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.math.filter.SlewRateLimiter;
 
+
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.DriveSubsystem;
 
@@ -20,8 +21,8 @@ public class ArcadeDriveCmd extends CommandBase {
   //private final Supplier<Double> speedFunction, turnFunction;
   
   private final Joystick m_stick = new Joystick(Controller.kDriverControllerPort);
-  private SlewRateLimiter xLimiter = new SlewRateLimiter(3);
-  private SlewRateLimiter yLimiter = new SlewRateLimiter(3);
+  private SlewRateLimiter xLimiter = new SlewRateLimiter(DriveConstants.kXLimiter);
+  private SlewRateLimiter yLimiter = new SlewRateLimiter(DriveConstants.kYLimiter);
   // private final  pastJoystics = new[];
 
   // this is somehting taht is prety cool
@@ -57,10 +58,9 @@ public class ArcadeDriveCmd extends CommandBase {
     
     
     
-    
+    //m_driveTrain.arcadeDrive(m_stick.getRawAxis(1)*DriveConstants.kDriveCoefficient, m_stick.getRawAxis(0)*DriveConstants.kTurnCoefficient);
     
     m_driveTrain.arcadeDrive(xLimiter.calculate(m_stick.getRawAxis(1))*DriveConstants.kDriveCoefficient, yLimiter.calculate(m_stick.getRawAxis(0))*DriveConstants.kTurnCoefficient); // this is a test that should make it slow down not instaly. i dont know exacly how it works. but i think that it works. if it does not work coment it out with // and then uncoment the the one that says this one
-    //LagArray(m_stick.getY(), Controller.kArrayLength)*DriveConstants.kDriveCoefficient, m_stick.getY()*DriveConstants.kTurnCoefficient);      // this one   
   }
 
   

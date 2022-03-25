@@ -10,6 +10,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import frc.robot.Constants.SubsytemConstants;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class IntakeSubsytem extends SubsystemBase {
   /** Creates a new ExampleSubsystem. */
@@ -29,5 +30,6 @@ public class IntakeSubsytem extends SubsystemBase {
 
   public void Run(double val){
     main1.set(ControlMode.PercentOutput, val);
+    SmartDashboard.putNumber("Intake Derecton", val*100);
   }
 }

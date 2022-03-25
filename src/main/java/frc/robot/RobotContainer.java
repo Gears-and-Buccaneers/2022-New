@@ -6,12 +6,11 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.cameraserver.CameraServer;
 
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.ClimberSubsytem;
@@ -25,6 +24,7 @@ import frc.robot.commands.DriveForwardCmd;
 import frc.robot.commands.IntakeCmd;
 import frc.robot.commands.ShooterCmd;
 import frc.robot.commands.TransitCmd;
+import frc.robot.commands.ShooteAndIntake;
 
 import frc.robot.Constants.Controller;
 
@@ -42,7 +42,7 @@ public class RobotContainer {
   private final ShooterSubsytem m_ShooterSubsytem = new ShooterSubsytem();
   private final TransitSubsytem m_TransitSubsytem = new TransitSubsytem();
 
-  private final Joystick m_stick = new Joystick(Controller.kDriverControllerPort);
+  private final Joystick m_stick = new Joystick(Controller.kButtonControllerPort);
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the button bindings
@@ -63,9 +63,11 @@ public class RobotContainer {
     new JoystickButton(m_stick, 6).whenHeld(new ClimberCmd(m_climberSubsytem, true));
     new JoystickButton(m_stick, 5).whenHeld(new ClimberCmd(m_climberSubsytem, false));
 
-    new JoystickButton(m_stick, 1).whenHeld(new IntakeCmd(m_IntakeSubsytem));
+    new JoystickButton(m_stick, 1).whenHeld(new IntakeCmd(m_IntakeSubsytem, true));
     new JoystickButton(m_stick, 4).whenHeld(new ShooterCmd(m_ShooterSubsytem));
-    new JoystickButton(m_stick, 2).whenHeld(new TransitCmd(m_TransitSubsytem));
+
+    new JoystickButton(m_stick, 2).whenHeld(new TransitCmd(m_TransitSubsytem, true));
+    new JoystickButton(m_stick, 3).whenHeld(new TransitCmd(m_TransitSubsytem, false));
 
 
     //new JoystickButton(m_stick, 7).whenHeld(new DriveForwardCmd(m_DriveSubsystem)); //this was a test for testing out a drive auto. i never got to test it.
@@ -78,6 +80,10 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    return new DriveForwardCmd(m_DriveSubsystem);
+    return new SequentialCommandGroup(
+      new DriveForwardCmd(m_DriveSubsystem, true),
+      new DriveForwardCmd(m_DriveSubsystem, false),
+      new ShooteAndIntake(m_ShooterSubsytem, m_TransitSubsytem)
+    );
   }
 }

@@ -26,9 +26,9 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    CameraServer.getInstance().startAutomaticCapture("Kunigunde Left Eye", 0);
-    CameraServer.getInstance().startAutomaticCapture("Kunigunde Right Eye", 2);
-    CameraServer.getInstance().startAutomaticCapture("Kunigunde Third Eye", 1);
+    CameraServer.startAutomaticCapture("Kunigunde Left Eye", 0);
+    CameraServer.startAutomaticCapture("Kunigunde Right Eye", 2);  // put a dot
+    CameraServer.startAutomaticCapture("Kunigunde Third Eye", 1);
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
